@@ -1,0 +1,4 @@
+def vsc_look():
+    # Das hier sieht aus wie in VS Code
+    results = [x**2 for x in range(10)]
+    return "Latex rockt!!!"

@@ -1,0 +1,34 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\chapter{Einleitung}
+\epigraph{\enquote{Das Ganze ist mehr als die Summe seiner Teile.}}{Aristoteles}
+\todo{Füge Text für Einleitung hinzu}
+Man nehme eine zufällig verteilte Population von Agenten $X$.
+Es gilt $X = \{x_1, x_2, ..., x_N\}$ mit $N \in \mathbb{N}$ als Anzahl der Agenten.
+Für einen Agenten $x_i \in X$ gilt
+\begin{equation}
+    x_i = Lb + r \cdot (Ub-Lb) \quad\text{mit } i = 1,2, ..., N ,
+\end{equation}
+wobei $Lb$ das untere und $Ub$ das obere Limit des Definitionsbereichs ist.
+
+
+Für die Nachbarschaft eines Agenten $x_i$ wird der euklidische Abstand verwendet.
+Mithilfe eines Radiuses $r$ wird die Nachbarschaft $\mathcal{N}_i \subseteq X$ eines Agenten $x_i$ definiert als
+\begin{equation}
+    \mathcal{N}_i = \{x \in X \mid d(x_i, x) \leq r \} \quad\text{mit } d(x_i, x) = |x_i - x| .
+\end{equation}
+
+Zur Ermittlung der Nachbarschaft im $n$-dimensionalen Raum wird folgender Algorithmus
+verwendet:
+
+\begin{lstlisting}[caption={Algorithmus zur Bestimmung der Nachbarschaft eines Agenten im $n$-dimensionalen Raum}, label={lst:neighborhood_algorithm}]
+def get_neighborhood(agent, all_agents, radius):
+    neighborhood = []
+    for other_agent in all_agents:
+        distance = euclidean_distance(agent.position, other_agent.position)
+        if distance <= radius:
+            neighborhood.append(other_agent)
+    return neighborhood
+\end{lstlisting}
+
+\end{document}

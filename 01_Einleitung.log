@@ -1,0 +1,39 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.21)  21 JAN 2026 15:05
+entering extended mode
+ \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/home/joshua/Documents/Studienarbeit/report/simulation_weak_emergence_report/chapters/01_Einleitung.tex
+(/home/joshua/Documents/Studienarbeit/report/simulation_weak_emergence_report/chapters/01_Einleitung.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.cls
+Document Class: subfiles 2020/11/14 v2.2 Multi-file projects (class)
+Preamble taken from file `../main.tex'
+(/usr/share/texlive/texmf-dist/tex/latex/import/import.sty
+Package: import 2020/04/01  v 6.2
+)
+
+! LaTeX Error: File `../main.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.cls:45: Emergency stop.
+<read *> 
+         
+l.45 \input{\preamble@file}
+                           ^^M
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 77 strings out of 476056
+ 1958 string characters out of 5791604
+ 1922975 words of memory out of 5000000
+ 22190 multiletter control sequences out of 15000+600000
+ 558069 words of font info for 36 fonts, out of 8000000 for 9000
+ 59 hyphenation exceptions out of 8191
+ 42i,0n,55p,253b,18s stack positions out of 10000i,1000n,20000p,200000b,200000s
+/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.cls:45:  ==> Fatal error occurred, no output PDF file produced!

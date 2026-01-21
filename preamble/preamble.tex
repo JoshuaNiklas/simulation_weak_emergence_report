@@ -1,0 +1,145 @@
+% =====================================================================
+% DOKUMENTENKLASSE UND GRUNDKONFIGURATION
+% =====================================================================
+% scrreprt ist die KOMA-Script-Klasse für Berichte/Arbeiten (ersetzt 'report')
+\documentclass[
+    ngerman,        % Sprache: Neue deutsche Rechtschreibung
+    12pt,           % Schriftgröße
+    a4paper,        % Papierformat (oft Standard, hier explizit)
+    headings=normal,% Größe der Überschriften
+    parskip=half,   % Halbzeiliger Abstand zwischen Absätzen (statt Einzug)
+    bibliography=totoc, % Literaturverzeichnis im Inhaltsverzeichnis anzeigen
+    index=totoc,    % Index im Inhaltsverzeichnis anzeigen
+    %BCOR=10mm,     % Bindekorrektur (optional, je nach Druckerei)
+]{scrreprt}
+
+\usepackage{subfiles}
+
+% =====================================================================
+% SPRACHE, KODIERUNG UND TYPOGRAFIE
+% =====================================================================
+\usepackage[T1]{fontenc}    % Wichtig für Umlaute und "ß" in PDFs (Suchen/Kopieren)
+\usepackage{babel}          % Deutsche Sprachanpassungen (Silbentrennung, Übersetzungen)
+\usepackage[autostyle=true]{csquotes} % Automatisch korrekte deutsche Anführungszeichen
+\usepackage{microtype}      % Verbessert das Schriftbild durch fortgeschrittene Typografie
+\usepackage{lmodern}        % Verbessert die Standard-Schriftart
+\usepackage{xcolor}
+% =====================================================================
+% LAYOUT UND SEITENRÄNDER (optional, KOMA hat gute Standards)
+% =====================================================================
+% Beispiel für die Nutzung von geometry, falls Ränder angepasst werden müssen
+% \usepackage[left=2.5cm, right=2.5cm, top=3cm, bottom=2.5cm]{geometry}
+
+% =====================================================================
+% MATHEMATIK UND EINHEITEN
+% =====================================================================
+\usepackage{amsmath}        % Erweiterte Funktionen für mathematische Formeln
+\usepackage{amssymb}        % Zusätzliche mathematische Symbole (Mengenzeichen etc.)
+\usepackage{siunitx}        % Für korrekt formatierte Zahlen und Einheiten (z.B. \SI{100}{\meter\per\second})
+\sisetup{output-decimal-marker={,}} % Optional: Stellt den Dezimaltrenner auf Komma
+
+% =====================================================================
+% ABBILDUNGEN, TABELLEN UND CODE
+% =====================================================================
+\usepackage{graphicx}       % Zum Einbinden von Bildern (\includegraphics)
+\usepackage{booktabs}       % Für professionell aussehende Tabellen (keine vertikalen Linien)
+\usepackage{caption}        % Anpassung der Formatierung von Bild- und Tabellenunterschriften
+\usepackage{subcaption}     % Für Unterabbildungen (zwei Bilder nebeneinander)
+
+\usepackage{sourcecodepro}
+\usepackage{listings}
+\definecolor{py_comment}{HTML}{008000}   % Grün
+\definecolor{py_keyword}{HTML}{0000FF}   % Blau
+\definecolor{py_builtin}{HTML}{900090}   % Lila (für print, len, etc.)
+\definecolor{py_string}{HTML}{A31515}    % Dunkelrot
+\definecolor{py_number}{HTML}{098658}    % Blau-Grün
+\definecolor{py_decorator}{HTML}{795E26} % Braun
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\fontsize{9pt}{13pt}\selectfont,
+    commentstyle=\color{py_comment}\itshape,
+    keywordstyle=\color{py_keyword}\bfseries,
+    stringstyle=\color{py_string},
+    numberstyle=\tiny\color{gray},
+    % Zusätzliche Python-Keywords für mehr Farbe
+    emph={self, cls, @classmethod, @staticmethod},
+    emphstyle=\color{py_decorator}\bfseries,
+    % Eingebaute Funktionen (Built-ins) farblich absetzen
+    morekeywords=[2]{print, len, range, sum, max, min, enumerate, zip, isinstance, type, list, dict, set, str, int, float},
+    keywordstyle=[2]\color{py_builtin},
+    % Design-Einstellungen
+    numbers=left,
+    numbersep=5pt,
+    breaklines=true,
+    showstringspaces=false,
+    frame=lines,           
+    framerule=1pt,
+    rulecolor=\color{orange!100},
+    xleftmargin=10pt,
+    tabsize=4,
+    aboveskip=10pt,
+    belowskip=10pt
+}
+\captionsetup[lstlisting]{
+    font={footnotesize, it},      % 'small' macht es kleiner, 'it' macht es kursiv
+    labelfont={bf},
+    skip=10pt,
+    justification=centering % Zentriert die Beschriftung (optional)
+}
+
+% =====================================================================
+% LITERATURVERZEICHNIS UND ZITATE
+% =====================================================================
+% Der moderne Standard: biblatex mit biber als Backend
+\usepackage[
+    backend=biber,
+    style=authoryear,  % Zitierstil (z.B. Autor (Jahr))
+    datamodel=ngerman, % Deutsche Anpassungen für biblatex
+    % natbib=true,     % Optionale Kompatibilität zu natbib Befehlen
+]{biblatex}
+% Pfad zur BibTeX-Datei angeben
+% \addbibresource{literatur.bib}
+
+% =====================================================================
+% ABKÜRZUNGSVERZEICHNIS UND GLOSSAR
+% =====================================================================
+\usepackage{acro} % Paket für Abkürzungsverzeichnis
+% Beispieldefinition einer Abkürzung:
+% \DeclareAcronym{latex}{short=LaTeX, long={Lamport's Tex}}
+
+% =====================================================================
+% VERWEISE UND LINKS (MUSS FAST ZULETZT GELADEN WERDEN!)
+% =====================================================================
+\usepackage{hyperref}       % Macht Links, Verweise und URLs klickbar im PDF
+\hypersetup{
+    colorlinks=true,        % Färbt Links
+    linkcolor=black,        % Farbe für interne Links (Kapitel, Seiten)
+    citecolor=black,        % Farbe für Zitate
+    urlcolor=blue,          % Farbe für URLs
+    pdfborder={0 0 0},      % Entfernt die hässlichen Link-Rahmen
+}
+\usepackage{cleveref}       % Intelligente Querverweise (fügt "Abbildung" oder "Tabelle" automatisch hinzu)
+% =====================================================================
+% EPIGRAPH (SCHÖNE ZITATE AN KAPITELANFÄNGEN)
+% =====================================================================
+\usepackage{epigraph}
+% Einstellungen für ein schöneres Layout
+\setlength{\epigraphwidth}{0.55\textwidth} % Breite
+\renewcommand{\epigraphsize}{\small}      % Schriftgröße
+\renewcommand{\sourceflush}{flushright}    % Quelle rechtsbündig
+
+% Optional: Quelle in Kapitälchen oder Fett
+\renewcommand{\textflush}{itshape} % Zitat selbst kursiv
+\makeatletter
+\makeatletter
+\renewcommand{\@episource}[1]{%
+   %\vspace{0.5\baselineskip} % Optional: Hier können Sie den Abstand manuell feintunen
+  {\raggedleft \scshape #1\par} % \raggedleft statt flushright spart Platz
+}
+\makeatother
+
+
+% =====================================================================
+% NÜTZLICHE WERKZEUGE (MUSS ZULETZT GELADEN WERDEN!)
+% =====================================================================
+\usepackage[textsize=tiny]{todonotes} 
